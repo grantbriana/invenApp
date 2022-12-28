@@ -1,0 +1,10 @@
+
+.card{
+    width: 18rem;
+    background-color: aqua;
+    color: blueviolet;
+}
+
+footer{
+    background-color: rgba(0, 0, 0, 0.05);
+}

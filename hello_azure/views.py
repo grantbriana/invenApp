@@ -1,6 +1,28 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
+from .models import Item
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+
+#CRUD Functionality
+class ItemCreate(CreateView):
+    model = Item
+    fields = ['id', 'name', 'inventory']
+
+class ItemUpdate(UpdateView):
+    model = Item
+    fields = ['id', 'name', 'inventory']
+
+class ItemDelete(DeleteView):
+    model = Item
+    success_url = "/hello_azure/index.html"
+
+
+def login(request):
+  template = loader.get_template('login.html')
+  return HttpResponse(template.render())
 
 def index(request):
     print('Request for index page received')
@@ -20,3 +42,4 @@ def hello(request):
             return render(request, 'hello_azure/hello.html', context)
     else:
         return redirect('index')
+
