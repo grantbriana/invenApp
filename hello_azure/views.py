@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 from .models import Item
+from .forms import Item
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
