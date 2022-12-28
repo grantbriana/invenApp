@@ -222,8 +222,11 @@ class ItemDelete(DeleteView):
 
 # Home Login page
 def index(request):
-    print('Request for index page received')
-    return render(request, 'hello_azure/index.html')
+    #print('Request for index page received')
+    #return render(request, 'login.html')
+    template = loader.get_template('login.html')
+    return HttpResponse(template.render())
+
 
 @login_required
 def item_detail_view(request, primary_key):
