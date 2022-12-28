@@ -1,0 +1,54 @@
+{% extends "base_generic.html" %}
+
+{% block title %}Inventory Manager{% endblock %}
+
+
+
+
+{% block content %}
+
+  <p>Welcome to the Inventory!</p>
+  <h2>Dynamic content</h2>
+  <p>The library has the following record counts:</p>
+  <ul>
+    <li><strong>Items:</strong> {{ num_items }}</li>
+      {% for item in items %}
+        <li>
+          <a href="{{ item.get_absolute_url }}">{{ item.id }}</a> ({{item.name}})  {{item.inventory}}
+        </li>
+      {% endfor %}
+
+  </ul>
+  <div class="col-lg-12">
+    <div class="table-responsive">
+      <table class = "table table-bordered table-hover table-striped tablesorter">
+        <thead>
+          <tr>
+            <th class="header"> ID <i class="icon-sort"></i></th>
+            <th class="header"> Name <i class="icon-sort"></i></th>
+            <th class="header"> Quantity  <i class="icon-sort"></i></th>
+            <th class="header">Options <i class="icon-sort"></i></th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for item in items %}
+              <tr>
+                  <td>{{ item.id }}</td>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.inventory }}</td>
+                  {% load static %}
+                  <td><a href = "{{ item.get_absolute_url }}"><img src = "{% static 'members/review.png' %}" alt = "View Item" width="30" height="30"></a>      
+                      <a href = "item/{{ item.id }}/update/"><img src = "{% static 'members/update.png' %}" alt = "Edit Item" width="30" height="30"></a>      
+                      <a href = "item/{{ item.id }}/delete/"><img src = "{% static 'members/remove.png' %}" alt = "Delete Item" width="30" height="30"></a>      
+                  </td>
+              </tr>
+          {% endfor %}
+
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock %}
+{% block footer %}{% endblock %}
