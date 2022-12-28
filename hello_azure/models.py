@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-import django_tables2 as tables
 
 # Create your models here.
 
